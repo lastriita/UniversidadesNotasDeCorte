@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universidades</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="detailUni.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="cabezera"></div>
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 id="title">Universidades</h1>
+            </div>
+        </div>
+
+        <div id="content"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function showContent(arrData, div) {
+
+        var html = '';
+
+        arrData.forEach(e => {
+            html+=
+            `<div class="carta">`+
+            `<div class="card">`+
+                `<div class="card-body">`+
+                    `<h5 class="card-title">${e.Notas}</h5>`+
+                    `<p class="card-text">${e.name}</p>`+
+                `</div>`+
+            `</div>`+
+            `</div>`;
+        });
+
+        document.getElementById(div).innerHTML = html;
+        var images = $(".icon");
+
+        $(images).on("error", function(event) {
+            $(event.target).css("display", "none");
+        });
+    }
+
+    function getNotas() {
+        var headers = {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                };
+        fetch(link, {
+                method: 'GET',
+                headers: headers
+            })
+            .then(response => response.json())
+            .then(data => {
+                showContent(data,"content")
+                console.log(data)
+            });
+    }
+
+    function getCabezera() {
+        var headers = {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                };
+        fetch(link2, {
+                method: 'GET',
+                headers: headers
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("cabezera").innerHTML = `<img src="${data.img}" class="icon">`;
+                console.log(data)
+            });
+    }
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var uni = urlParams.get('uni')
+    var link= "/universidades/"+uni;
+    var link2= "/info/"+uni;
+
+    var images = $(".icon");
+    $(images).on("error", function(event) {
+        $(event.target).css("display", "none");
+    });
+
+    document.getElementById("title").innerHTML = uni;
+    getNotas();
+    getCabezera();
+</script>
+</body>
+</html>

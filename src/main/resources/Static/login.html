@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<title>MyPage</title>
+<head>
+    <meta charset="utf-8">
+    <title>HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script src="login.js"></script>
+</head>
+
+<body class="text-center">
+<main class="form-signin">
+    <form method="post" action="/login2" onsubmit="return validateForm()">
+        <h1 class="h3 mb-3 fw-normal">Foro Universidades</h1>
+        <br>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+    </form>
+</main>
+</body>
+</html>

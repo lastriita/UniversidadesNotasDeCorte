@@ -1,0 +1,19 @@
+.icon{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: 100%;
+    height: 230px;
+    float: left;
+}
+
+.carta{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.content-body{
+    margin-left: 20%;
+    margin-right: 20%;
+}
